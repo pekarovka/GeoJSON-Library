@@ -21,6 +21,9 @@ class GeoJSON:
 
     @classmethod
     def loadFromJsonEntity(self, json_entity):
+        if json_entity is None:
+            return None
+
         if json_entity["type"] == "Point":
             from geojson_lib.Point import Point
             return Point.loadFromJsonEntity(json_entity)

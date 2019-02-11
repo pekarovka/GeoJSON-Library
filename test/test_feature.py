@@ -10,6 +10,12 @@ class TestFeature(unittest.TestCase):
         savedtext = feature.saveToString()
         self.assertEqual(text, savedtext)
 
+    def test_it_saves_null_geometry(self):
+        text = """{"type": "Feature", "geometry": null, "properties": {"foo": 42}}"""
+        feature = GeoJSON.loadFromString(text)
+        savedtext = feature.saveToString()
+        self.assertEqual(text, savedtext)
+
 
 if __name__ == '__main__':
     unittest.main()

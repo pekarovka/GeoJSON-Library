@@ -18,7 +18,7 @@ class Feature(Geometry):
 
     def saveToJsonEntity(self):
         json_entity = super(Feature, self).saveToJsonEntity()
-        json_entity["geometry"] = self.geometry.saveToJsonEntity()
+        json_entity["geometry"] = self.geometry.saveToJsonEntity() if self.geometry is not None else None
         json_entity["properties"] = self.properties
         return json_entity
 
