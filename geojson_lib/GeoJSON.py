@@ -2,8 +2,6 @@ import json
 
 
 class GeoJSON:
-    def __init__(self, json_entity):
-        pass
 
     def getType(self):
         """Returns geo json type of the instance."""
@@ -22,11 +20,11 @@ class GeoJSON:
 
         if json_entity["type"] == "Point":
             from geojson_lib.Point import Point
-            return Point(json_entity)
+            return Point.loadFromJsonEntity(json_entity)
 
         elif json_entity["type"] == "MultiPoint":
             from geojson_lib.MultiPoint import MultiPoint
-            return MultiPoint(json_entity)
+            return MultiPoint.loadFromJsonEntity(json_entity)
 
         raise Exception("Unknown type.")
 

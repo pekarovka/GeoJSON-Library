@@ -2,17 +2,21 @@ from geojson_lib.Geometry import Geometry
 
 
 class Point(Geometry):
-    def __init__(self, json_entity):
-        super(Point, self).__init__(json_entity)
+    def __init__(self, lat, lon):
+        super(Point, self).__init__()
 
-        self.lat = json_entity["coordinates"][0]
+        self.lat = lat
         """Point latitude"""
 
-        self.lon = json_entity["coordinates"][1]
+        self.lon = lon
         """Point longitude"""
 
     def getType(self):
         return "Point"
+
+    @classmethod
+    def loadFromJsonEntity(cls, json_entity):
+        return Point(json_entity["coordinates"][0], json_entity["coordinates"][1])
 
     def saveToJsonEntity(self):
         json_entity = super(Point, self).saveToJsonEntity()

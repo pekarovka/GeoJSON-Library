@@ -2,10 +2,10 @@ from geojson_lib.Geometry import Geometry
 
 
 class MultiPoint(Geometry):
-    def __init__(self, json_entity):
-        super(MultiPoint, self).__init__(json_entity)
+    def __init__(self, *coordinates):
+        super(MultiPoint, self).__init__()
 
-        self._coordinates = json_entity["coordinates"]
+        self._coordinates = coordinates
 
     def __len__(self):
         return len(self._coordinates)
@@ -18,6 +18,10 @@ class MultiPoint(Geometry):
 
     def getType(self):
         return "MultiPoint"
+
+    @classmethod
+    def loadFromJsonEntity(cls, json_entity):
+        return MultiPoint(*json_entity["coordinates"])
 
     def saveToJsonEntity(self):
         json_entity = super(MultiPoint, self).saveToJsonEntity()
