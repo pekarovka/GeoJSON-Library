@@ -30,6 +30,10 @@ class GeoJSON:
             from geojson_lib.LineString import LineString
             return LineString.loadFromJsonEntity(json_entity)
 
+        elif json_entity["type"] == "MultiLineString":
+            from geojson_lib.MultiLineString import MultiLineString
+            return MultiLineString.loadFromJsonEntity(json_entity)
+
         raise Exception("Unknown type.")
 
     def saveToFile(self, filename):
