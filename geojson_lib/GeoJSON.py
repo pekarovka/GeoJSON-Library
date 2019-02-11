@@ -49,6 +49,10 @@ class GeoJSON:
             from geojson_lib.GeometryCollection import GeometryCollection
             return GeometryCollection.loadFromJsonEntity(json_entity)
 
+        elif json_entity["type"] == "Feature":
+            from geojson_lib.Feature import Feature
+            return Feature.loadFromJsonEntity(json_entity)
+
         raise Exception("Unknown type.")
 
     def saveToFile(self, filename):
