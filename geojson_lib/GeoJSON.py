@@ -3,9 +3,10 @@ import json
 
 class GeoJSON:
     def __init__(self, json_entity):
-        self.json_entity = json_entity
+        pass
 
     def getType(self):
+        """Returns geo json type of the instance."""
         raise Exception("Method must be overridden.")
     
     @classmethod
@@ -24,3 +25,16 @@ class GeoJSON:
             return Point(json_entity)
 
         return GeoJSON(json_entity)
+
+    def saveToFile(self, filename):
+        """Save geo json object to a file."""
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(self.saveToString())
+
+    def saveToString(self):
+        return json.dumps(self.saveToJsonEntity())
+
+    def saveToJsonEntity(self):
+        return {
+            "type": self.getType()
+        }

@@ -14,6 +14,12 @@ class TestPoint(unittest.TestCase):
         point = GeoJSON.loadFromString(text)
         self.assertEqual("Point", point.getType())
 
+    def test_it_saves_to_string(self):
+        text = """{"type": "Point", "coordinates": [102.0, 0.5]}"""
+        point = GeoJSON.loadFromString(text)
+        savedtext = point.saveToString()
+        self.assertEqual(text, savedtext)
+
 
 if __name__ == '__main__':
     unittest.main()

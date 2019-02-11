@@ -5,11 +5,17 @@ class Point(Geometry):
     def __init__(self, json_entity):
         super(Point, self).__init__(json_entity)
 
-        self.lat = self.coordinates[0]
+        self.lat = json_entity["coordinates"][0]
         """Point latitude"""
 
-        self.lon = self.coordinates[1]
+        self.lon = json_entity["coordinates"][1]
         """Point longitude"""
 
     def getType(self):
         return "Point"
+
+    def saveToJsonEntity(self):
+        json_entity = super(Point, self).saveToJsonEntity()
+        json_entity["coordinates"] = [self.lat, self.lon]
+        return json_entity
+
