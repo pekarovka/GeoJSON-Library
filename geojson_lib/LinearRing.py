@@ -1,7 +1,9 @@
 
 class LinearRing():
     def __init__(self, points):
+        assert type(points) == list
         self._points = points
+
 
         if len(points) < 4:
             raise Exception("LinearRing must have at least 4 points.")

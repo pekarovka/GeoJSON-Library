@@ -38,6 +38,10 @@ class GeoJSON:
             from geojson_lib.Polygon import Polygon
             return Polygon.loadFromJsonEntity(json_entity)
 
+        elif json_entity["type"] == "MultiPolygon":
+            from geojson_lib.MultiPolygon import MultiPolygon
+            return MultiPolygon.loadFromJsonEntity(json_entity)
+
         raise Exception("Unknown type.")
 
     def saveToFile(self, filename):
