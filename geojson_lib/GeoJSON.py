@@ -24,7 +24,11 @@ class GeoJSON:
             from geojson_lib.Point import Point
             return Point(json_entity)
 
-        return GeoJSON(json_entity)
+        elif json_entity["type"] == "MultiPoint":
+            from geojson_lib.MultiPoint import MultiPoint
+            return MultiPoint(json_entity)
+
+        raise Exception("Unknown type.")
 
     def saveToFile(self, filename):
         """Save geo json object to a file."""
