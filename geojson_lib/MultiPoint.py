@@ -5,7 +5,7 @@ class MultiPoint(Geometry):
     def __init__(self, *coordinates):
         super(MultiPoint, self).__init__()
 
-        self._coordinates = coordinates
+        self._coordinates = list(coordinates)
 
     def __len__(self):
         return len(self._coordinates)
