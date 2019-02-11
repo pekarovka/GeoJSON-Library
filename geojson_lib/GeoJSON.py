@@ -17,7 +17,10 @@ class GeoJSON:
     def loadFromString(cls, text):
         """Loads geo json object from a string."""
         json_entity = json.loads(text)
+        return GeoJSON.loadFromJsonEntity(json_entity)
 
+    @classmethod
+    def loadFromJsonEntity(self, json_entity):
         if json_entity["type"] == "Point":
             from geojson_lib.Point import Point
             return Point.loadFromJsonEntity(json_entity)
@@ -41,6 +44,10 @@ class GeoJSON:
         elif json_entity["type"] == "MultiPolygon":
             from geojson_lib.MultiPolygon import MultiPolygon
             return MultiPolygon.loadFromJsonEntity(json_entity)
+
+        elif json_entity["type"] == "GeometryCollection":
+            from geojson_lib.GeometryCollection import GeometryCollection
+            return GeometryCollection.loadFromJsonEntity(json_entity)
 
         raise Exception("Unknown type.")
 
