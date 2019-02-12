@@ -15,9 +15,7 @@ class MultiPolygon(Geometry):
 
     @classmethod
     def loadFromJsonEntity(cls, json_entity):
-        return MultiPolygon(*map(
-            lambda x: LinearRingArray(*list(map(lambda y: LinearRing(y), x))), json_entity["coordinates"]
-        ))
+        return MultiPolygon(*map(lambda x: LinearRingArray(*list(map(lambda y: LinearRing(y), x))), json_entity["coordinates"]))
 
     def saveToJsonEntity(self):
         json_entity = super(MultiPolygon, self).saveToJsonEntity()

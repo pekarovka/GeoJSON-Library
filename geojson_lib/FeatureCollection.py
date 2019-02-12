@@ -1,4 +1,3 @@
-from geojson_lib.Geometry import Geometry
 from geojson_lib.GeoJSON import GeoJSON
 from geojson_lib.Feature import Feature
 

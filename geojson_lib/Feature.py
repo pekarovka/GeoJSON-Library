@@ -16,11 +16,8 @@ class Feature(Geometry):
 
     @classmethod
     def loadFromJsonEntity(cls, json_entity):
-        return Feature(GeoJSON.loadFromJsonEntity(
-            json_entity["geometry"]),
-            json_entity["properties"],
-            json_entity["id"] if "id" in json_entity else None
-        )
+        return Feature(GeoJSON.loadFromJsonEntity(json_entity["geometry"]),json_entity["properties"],
+            json_entity["id"] if "id" in json_entity else None)
 
     def saveToJsonEntity(self):
         json_entity = super(Feature, self).saveToJsonEntity()

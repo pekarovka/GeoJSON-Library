@@ -16,9 +16,11 @@ class Point(Geometry):
 
     @classmethod
     def loadFromJsonEntity(cls, json_entity):
+        """Load from entity."""
         return Point(json_entity["coordinates"][0], json_entity["coordinates"][1])
 
     def saveToJsonEntity(self):
+        """Save and return entiny."""
         json_entity = super(Point, self).saveToJsonEntity()
         json_entity["coordinates"] = [self.lat, self.lon]
         return json_entity

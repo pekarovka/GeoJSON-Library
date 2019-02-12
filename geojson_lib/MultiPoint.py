@@ -11,9 +11,11 @@ class MultiPoint(Geometry):
         return len(self._coordinates)
 
     def lat(self, index):
+        """Return latitude."""
         return self._coordinates[index][0]
 
     def lon(self, index):
+        """Return longitude."""
         return self._coordinates[index][1]
 
     def getType(self):

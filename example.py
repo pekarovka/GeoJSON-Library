@@ -1,8 +1,5 @@
-"""
-Program zahodí body moc vzdálené od středu
+"""Program zahodí body moc vzdálené od středu"""
 
-(poslední 3 body)
-"""
 import json
 from geojson_lib.GeoJSON import GeoJSON
 from geojson_lib.MultiPoint import MultiPoint

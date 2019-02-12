@@ -1,5 +1,6 @@
 
 class LinearRing():
+    """Helps to create polygon like in RFC GeoJSON format."""
     def __init__(self, points):
         assert type(points) == list
         self._points = points
