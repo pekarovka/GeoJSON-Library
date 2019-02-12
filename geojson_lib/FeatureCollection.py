@@ -7,7 +7,7 @@ class FeatureCollection(GeoJSON):
     def __init__(self, *items):
         super(FeatureCollection, self).__init__()
 
-        self.items = items
+        self.items = list(items)
 
     def getType(self):
         return "FeatureCollection"

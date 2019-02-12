@@ -6,7 +6,7 @@ class GeometryCollection(Geometry):
     def __init__(self, *items):
         super(GeometryCollection, self).__init__()
 
-        self.items = items
+        self.items = list(items)
 
     def getType(self):
         return "GeometryCollection"
