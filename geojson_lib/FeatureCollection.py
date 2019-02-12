@@ -21,3 +21,9 @@ class FeatureCollection(GeoJSON):
         json_entity["features"] = list(map(lambda x: x.saveToJsonEntity(), self.items))
         return json_entity
 
+    def get_by_id(self, id, default=None):
+        """Finds item by id."""
+        for i in self.items:
+            if i.id == id:
+                return i
+        return default
